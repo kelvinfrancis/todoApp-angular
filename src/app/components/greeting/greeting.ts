@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-greeting',
-  imports: [],
   templateUrl: './greeting.html',
-  styleUrl: './greeting.css'
+  styleUrls: ['../../../styles.css'],
 })
-export class Greeting {
+export class GreetingComponent {
+  @Input() name = '';
+  @Output() nameChange = new EventEmitter<string>();
 
+  onNameInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.nameChange.emit(input.value);
+  }
 }

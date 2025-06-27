@@ -1,1 +1,42 @@
-<p>create-todo works!</p>
+<section class="create-todo">
+  <h3>AGREGA UNA TAREA</h3>
+  <form (submit)="addTodo.emit(); $event.preventDefault()">
+    <h4>¿Qué necesitas agregar a tus tareas?</h4>
+    <input 
+      type="text" 
+      placeholder="ej. Terminar la actividad final"
+      [value]="inputContent"
+      (input)="onInputContentChange($event)"
+    />
+
+    <h4>Elige una categoría</h4>
+    <div class="options">
+      <label>
+        <input 
+          type="radio"
+          name="category" 
+          value="Estudios"
+          [checked]="inputCategory === 'Estudios'"
+          (change)="inputCategoryChange.emit('business')"
+        />
+        <span class="bubble business"></span>
+        <div>Estudios</div>
+      </label>
+
+      <label>
+        <input 
+          type="radio"
+          name="category" 
+          value="Personal"
+          [checked]="inputCategory === 'Personal'"
+          (change)="inputCategoryChange.emit('personal')"
+        />
+        <span class="bubble personal"></span>
+        <div>Personal</div>
+      </label>
+    </div>
+
+    <input type="submit" value="Agregar tarea" />
+  </form>
+</section>
+

@@ -1,1 +1,22 @@
-<p>todo-item works!</p>
+<div [class.done]="todo.done" class="todo-item">
+  <label>
+    <input
+      type="checkbox"
+      [checked]="todo.done"
+      (change)="onDoneChange($event)"
+    />
+    <span [class]="'bubble ' + todo.category"></span>
+  </label>
+
+  <div class="todo-content">
+    <input
+      type="text"
+      [value]="todo.content"
+      (input)="onContentChange($event)"
+    />
+  </div>
+
+  <div class="actions">
+    <button class="delete" (click)="delete.emit()">Delete</button>
+  </div>
+</div>

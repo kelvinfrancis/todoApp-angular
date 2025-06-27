@@ -1,1 +1,29 @@
-<p>todo-list works!</p>
+<ul class="todo-list">
+  @for ( todo of todos; track todo.id; let i = $index) {
+    <li>
+      <app-todo-item
+        [todo]="todo"
+        (contentChange)="onContentChange(i, $event)"
+        (doneChange)="onDoneChange(i, $event)"
+        (delete)="onDelete(i)">
+      </app-todo-item>
+    </li>
+  }
+</ul>
+
+
+
+<!-- <section class="todo-list">
+  <h3>TAREAS</h3>
+  <div class="list">
+    <app-todo-item
+      *ngFor="let todo of todos; let i = index"
+      [todo]="todo"
+      (contentChange)="onContentChange(i, $event)"
+      (doneChange)="onDoneChange(i, $event)"
+      (delete)="onDelete(i)"
+    ></app-todo-item>
+  </div>
+</section> -->
+
+

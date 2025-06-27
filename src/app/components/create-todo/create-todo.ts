@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-create-todo',
-  imports: [],
   templateUrl: './create-todo.html',
-  styleUrl: './create-todo.css'
+  styleUrls: ['../../../styles.css'],
 })
-export class CreateTodo {
+export class CreateTodoComponent {
+  @Input() inputContent = '';
+  @Input() inputCategory = '';
 
+  @Output() inputContentChange = new EventEmitter<string>();
+  @Output() inputCategoryChange = new EventEmitter<string>();
+  @Output() addTodo = new EventEmitter<void>();
+
+  onInputContentChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.inputContentChange.emit(input.value);
+  }
 }
